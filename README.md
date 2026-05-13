@@ -68,15 +68,16 @@ Run ONNX inference on `.mgz` brain volumes using [main.py](main.py). The script 
 1) Place your inputs:
 - `.mgz` files in `./data/`
 
-## Requirements
+2) Install dependencies in a virtual environment:
 - Python 3.8+
 - Dependencies used by [inference.py](inference.py): `onnx`, `onnxruntime`, `torch`, `numpy`, `scipy`, `nibabel`, `pandas`
-2) Install dependencies in a virtual environment:
+
+
 Linux/Mac:
 ```
+bash pip install --upgrade pip
 python -m venv venv
 source venv/bin/activate 
-bash pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
@@ -84,11 +85,9 @@ Windows:
 ```
 python -m pip install --upgrade pip
 python -m venv .lbavenv 
-.venv\Scripts\activate.bat
+.lbavenv\Scripts\activate.bat
 pip install -r requirements.txt
 ```
-
-
 
 
 3) Run:
