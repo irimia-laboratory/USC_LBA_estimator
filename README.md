@@ -1,4 +1,4 @@
-# USC_LBA_estimator
+# USC LBA estimator
 
 # Voxel-wise Local Brain Age Mapping via Generative Deep Learning
 
@@ -47,7 +47,7 @@ To mitigate the [systematic bias](https://arxiv.org/pdf/2405.15950?) where deep 
 ## Results Highlights
 
   * **Aging Gradient:** Frontal areas, temporal poles, and anterior periventricular white matter showed the **most advanced aging** (older LBA), while the basal ganglia, thalamus, occipital cortex, and posterior white matter exhibited **younger LBAs**.
-  * **Disease Distinction:** The brain-averaged LAGs showed clear separation between cognitively normal and imapaired groups:
+  * **Disease Distinction:** The brain-averaged LAGs showed clear separation between cognitively normal and impaired groups:
       * **HC:** Mean LAG $\mu \approx 0$ years.
       * **MCI:** Mean LAG $\mu \approx 1.6$ years.
       * **AD:** Mean LAG $\mu \approx 3.5$ years.
@@ -61,12 +61,35 @@ Group differences:
 -----
 
 
-## Overview
+## Run Inference
 Run ONNX inference on `.mgz` brain volumes using [main.py](main.py). The script loads a CSV (for metadata), scans a directory for `.mgz` files, and saves predictions as `.npy` files.
 
 ## Quick Start
 1) Place your inputs:
-- `.mgz` files in `./data/`
+- `.mgz` files in `./data/`. These are brain.mgz files obtained from Freesurfer's recon-all pipeline for each subject. Please ensure that the filenames are unique and correspond to the IDs in the CSV file.
+- `ages.csv` in `./data/` (contains chronological ages of the brains in the brainsDir with their corresponding filenames).
+
+For example
+```text
+project-root/
+├── main.py
+├── README.md
+├── data/
+│   ├── ages.csv
+│   ├── 383_brain.mgz
+│   ├── 518_brain.mgz
+│   └── ...
+└── ...
+```
+
+  Then csv should look like this:
+
+  ```csv
+  ID,CA
+  383,55
+  518,68
+
+  ```
 
 2) Install dependencies in a virtual environment:
 - Python 3.8+
