@@ -56,10 +56,9 @@ To mitigate the [systematic bias](https://arxiv.org/pdf/2405.15950?) where deep 
 
 Group differences: 
 ![Figure showing the LBA maps and group differences](ADNI-HC-MCI-AD-Surf_vols_Histogram_combined.png)
-
+The color scale on the right ranges from -5 y to 5 y. The x axis on the histogram displays local brain age gap in years ranging from -2 to 5 years.
 
 -----
-
 
 ## Run Inference
 Run ONNX inference on `.mgz` brain volumes using [main.py](main.py). The script loads a CSV (for metadata), scans a directory for `.mgz` files, and saves predictions as `.npy` files.
@@ -90,6 +89,14 @@ project-root/
   518,68
 
   ```
+  - Edit the paths in [main.py](main.py):
+
+```python
+csvFileLoc = r"./data/ages.csv"
+brainsDir = r"./data/"
+saveFlag = True # this flag controls whether to save the output predictions as .npy files
+saveLoc = r"./outFiles/"
+```
 
 2) Install dependencies in a virtual environment:
 - Python 3.8+
@@ -98,7 +105,7 @@ project-root/
 
 Linux/Mac:
 ```
-bash pip install --upgrade pip
+pip install --upgrade pip
 python -m venv venv
 source venv/bin/activate 
 pip install -r requirements.txt
@@ -121,15 +128,7 @@ python main.py
 4) Outputs:
 - `.npy` prediction files in `./outFiles/`
 
-## Configure Inputs
-Edit the paths in [main.py](main.py):
 
-```python
-csvFileLoc = r"./data/ages.csv"
-brainsDir = r"./data/"
-saveFlag = True
-saveLoc = r"./outFiles/"
-```
 
 ## Optional: Run Inference Directly
 [inference.py](inference.py) also exposes a CLI. Example:

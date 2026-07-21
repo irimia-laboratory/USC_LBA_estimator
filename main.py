@@ -9,7 +9,7 @@ brainsDir = r"./data/"
 # Load metadata if needed for downstream use
 data_df = pd.read_csv(csvFileLoc)
 
-saveFlag = True  # save predictions as csv
+saveFlag = True  # this flag controls whether to save the output predictions as .npy files
 saveLoc = r"./outFiles/"
 
 # Execute inference using explicit arguments
