@@ -60,19 +60,47 @@ The color scale on the right ranges from -5 y to 5 y. The x axis on the histogra
 
 ---
 
-## 🚀 Run the App
+## Demo
+
+A live demo of the application is available [here](https://usclocalba.streamlit.app/).
+Because this is a free service, it may take a few minutes to load the model and run the inference or might run out of resources if too many users are accessing it simultaneously. For faster results, you can run the app locally using Docker.
+
+## 🚀 Run the App Locally
 
 1. Download the docker image from docker hub:
 ``` 
 docker pull ghcr.io/nikhilcusc/localba:latest
 ```
 
+2. Check if the image is downloaded successfully:
+```
+docker images
+```
+You should see `ghcr.io/nikhilcusc/localba` in the list of images.
+
 2. Run the docker image to launch the application:
 ```
-docker run -p 10000:10000 ghcr.io/nikhilcusc/localba:latest
+docker run -d -p 10000:10000 ghcr.io/nikhilcusc/localba:latest
 ```
 
 3. Open a browser and go to `http://localhost:10000` to access the app.
+
+4. To view the container, run:
+```
+docker ps
+```
+
+This command lists all running containers. You should see the container running the app in the output. The first column shows the container ID, and the last column shows the command that was used to start the container. You can use this name or the container ID to stop the container later.
+
+5. To stop the app, run:
+```
+docker stop <container_name>
+```
+or
+
+```
+docker stop <container_id>
+```
 
 ---
 
