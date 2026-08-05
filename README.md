@@ -16,7 +16,7 @@ The output can be converted to **Local Age Gap (LAG = LBA - Chronological Age)**
 
 The core of the framework is a **V-Net architecture**, a variation of the U-Net model adapted for 3D volumetric medical image processing.
 
-  * **Input:** T1-weighted, preprocessed and skull-stripped brain MRIs using Freesurfer's (FS) [recon-all](https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all). The brain.mgz files obtained from recon-all are downsampled to $128^3$ which are input to the model.
+  * **Input:** T1-weighted, preprocessed and skull-stripped brain MRIs using Freesurfer's (FS) [recon-all](https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all). The brain.mgz files ($256^3$) obtained from recon-all are downsampled to $128^3$ which are input to the model.
   * **Structure:** Consists of a 3D Convolutional Neural Network (CNN) encoder and a decoder with **skip connections** to transfer fine MRI structural information, critical for high-resolution output. The model uses **nearest neighbor upsampling** in the decoder instead of transposed convolutions to avoid "checkerboard" artifacts in the predicted images.
   * **Output:** Voxel-wise estimations of LBA (volume size: $128^3$).
   * **Training:** Trained using the **Mean Absolute Error (MAE) loss function** and the **Adam optimizer** on a multi-site dataset of 14,748 cognitively normal healthy control (HC) participants.
@@ -59,6 +59,18 @@ Group differences:
 The color scale on the right ranges from -5 y to 5 y. The x axis on the histogram displays local brain age gap in years ranging from -2 to 5 years.
 
 -----
+
+## Run app
+1 Download the docker image from docker hub:
+``` 
+docker pull usclba:latest
+```
+1 Run the docker image:
+```
+docker run -p 10000:10000 usclba:latest
+```
+
+---
 
 ## Run Inference
 Run ONNX inference on `.mgz` brain volumes using [main.py](main.py). The script loads a CSV (for metadata), scans a directory for `.mgz` files, and saves predictions as `.npy` files.

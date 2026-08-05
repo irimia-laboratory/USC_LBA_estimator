@@ -1,7 +1,11 @@
 numpy
 nibabel
-onnx==1.16.1
+onnx
 onnxruntime
 torch
 scipy
 pandas
+gradio
+matplotlib
+plotly
+streamlit
