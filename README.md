@@ -42,7 +42,7 @@ To mitigate the [systematic bias](https://arxiv.org/pdf/2405.15950?) where deep 
 1.  **Voxel-wise Coefficients:** A bias correction coefficient is initially estimated for **each voxel** in the brain.
 2.  **Uniform Correction:** The **median** of all these voxel-wise coefficients is then used to perform bias correction **uniformly** across the entire brain scan. This preserves the biologically meaningful regional variability in LBA while correcting the global age prediction bias.
 
------
+---
 
 ## Results Highlights
 
@@ -58,18 +58,18 @@ Group differences:
 ![Figure showing the LBA maps and group differences](ADNI-HC-MCI-AD-Surf_vols_Histogram_combined.png)
 The color scale on the right ranges from -5 y to 5 y. The x axis on the histogram displays local brain age gap in years ranging from -2 to 5 years.
 
------
+---
 
-## Run app
+## 🚀 Run the App
 
 1. Download the docker image from docker hub:
 ``` 
-docker pull usclba:latest
+docker pull ghcr.io/nikhilcusc/localba:latest
 ```
 
-2. Run the docker image:
+2. Run the docker image to launch the application:
 ```
-docker run -p 10000:10000 usclba:latest
+docker run -p 10000:10000 ghcr.io/nikhilcusc/localba:latest
 ```
 
 3. Open a browser and go to `http://localhost:10000` to access the app.
@@ -158,14 +158,11 @@ plot3Views function in utils.py:
 - Extracts three slices: axial (`z`), sagittal (`x`), and coronal (`y`).
 - Plots them side-by-side with colorbars.
 
+---
 
-
------
-
-## Citation
+## 📝 Citation
 
 If you use this work, please cite the original paper:
-
 
 [Deep learning maps local brain aging in relation to cognition across human adulthood](https://www.pnas.org/doi/10.1073/pnas.2532233123)
 
