@@ -61,14 +61,18 @@ The color scale on the right ranges from -5 y to 5 y. The x axis on the histogra
 -----
 
 ## Run app
-1 Download the docker image from docker hub:
+
+1. Download the docker image from docker hub:
 ``` 
 docker pull usclba:latest
 ```
-1 Run the docker image:
+
+2. Run the docker image:
 ```
 docker run -p 10000:10000 usclba:latest
 ```
+
+3. Open a browser and go to `http://localhost:10000` to access the app.
 
 ---
 
@@ -161,7 +165,27 @@ plot3Views function in utils.py:
 ## Citation
 
 If you use this work, please cite the original paper:
-Coming soon!
+
+
+[Deep learning maps local brain aging in relation to cognition across human adulthood](https://www.pnas.org/doi/10.1073/pnas.2532233123)
+
+*Proceedings of the National Academy of Sciences (PNAS)*  
+DOI: https://doi.org/10.1073/pnas.2532233123
+
+
+BibTeX:
 ```
-[Citation for the paper]
+
+@article{
+chaudhari2026dl_lba,
+author = {Nikhil N. Chaudhari  and Owen M. Vega Huerta  and Samayan Bhattacharya  and Nahian F. Chowdhury  and Andrei Irimia  and the Alzheimer’s Disease Neuroimaging Initiative},
+title = {Deep learning maps local brain aging in relation to cognition across human adulthood},
+journal = {Proceedings of the National Academy of Sciences},
+volume = {123},
+number = {32},
+pages = {e2532233123},
+year = {2026},
+doi = {10.1073/pnas.2532233123},
+eprint = {https://www.pnas.org/doi/pdf/10.1073/pnas.2532233123},
+}
 ```
