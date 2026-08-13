@@ -17,6 +17,8 @@ The output can be converted to **Local Age Gap (LAG = LBA - Chronological Age)**
 A live demo of the application is available [here](https://usclocalba.streamlit.app/).
 Because this is a free service, it may take a few minutes to load the model and run the inference or might run out of resources if too many users are accessing it simultaneously. For faster results, you can run the app locally using Docker.
 
+Note: Streamlit does not have a built-in persistent data retention policy because Streamlit does not store or persist user data, uploaded files, or app states on disk. Data processed by an app lives temporarily in RAM and is wiped when the container reboots or the session ends.
+
 ## 🚀 Run the App Locally
 
 1. Download the docker image from docker hub:
