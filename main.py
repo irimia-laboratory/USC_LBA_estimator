@@ -1,5 +1,4 @@
 import pandas as pd
-
 from inference import run_inference
 
 # User-configurable inputs

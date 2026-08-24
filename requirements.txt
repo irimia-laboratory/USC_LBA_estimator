@@ -1,3 +1,4 @@
+# Core inference dependencies
 numpy
 nibabel
 onnx
@@ -5,6 +6,8 @@ onnxruntime
 torch
 scipy
 pandas
+
+# Web app and visualization dependencies
 gradio
 matplotlib
 plotly
