@@ -33,7 +33,8 @@ def list_mgz_files(brains_dir):
     return mgz_files
 
 
-def inference_onnx(ort_session, brain, device, debug=False):
+
+def inference_onnx(ort_session, brain, device, biasCorr=True, debug=False):
     min_mask_threshold = 0.5
     biasCoef=[0.67661,21.6]
     mask = (brain > min_mask_threshold).astype(np.bool_)
@@ -53,8 +54,9 @@ def inference_onnx(ort_session, brain, device, debug=False):
     ort_outs = ort_session.run(None, ort_inputs)
     lba = ort_outs[0].squeeze()  # shape (128, 128, 128)
 
-    # add semi-global bias to the LBA map
-    lba = (lba - biasCoef[1])/biasCoef[0]
+    if biasCorr:
+        # add semi-global bias to the LBA map
+        lba = (lba - biasCoef[1])/biasCoef[0]
 
     if debug:
         print(
@@ -70,6 +72,7 @@ def run_inference(
     save_flag=True,
     save_loc="./outFiles/",
     model_path="LBAmodel.onnx",
+    biasCorr=True,
     debug=False,
 ):
     load_and_check_model(model_path)
@@ -85,7 +88,7 @@ def run_inference(
         img = nib.load(os.path.join(brains_dir, mgz_file))
         data = img.get_fdata()
         brain = ndi.zoom(data, (0.5, 0.5, 0.5))
-        lba_map = inference_onnx(ort_session, brain, device, debug=debug)
+        lba_map = inference_onnx(ort_session, brain, device, biasCorr=True, debug=debug)
         if save_flag:
             np.save(
                 os.path.join(save_loc, mgz_file.replace(".mgz", "_lba.npy")),

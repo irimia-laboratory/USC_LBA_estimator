@@ -17,4 +17,5 @@ run_inference(
     brains_dir=brainsDir,
     save_flag=saveFlag,
     save_loc=saveLoc,
+    biasCorr=True,  # Set to True to apply bias correction
 )
