@@ -54,7 +54,7 @@ def inference_onnx(ort_session, brain, device, debug=False):
     lba = ort_outs[0].squeeze()  # shape (128, 128, 128)
 
     # add semi-global bias to the LBA map
-    lba = lba * biasCoef[0] + biasCoef[1]
+    lba = (lba - biasCoef[1])/biasCoef[0]
 
     if debug:
         print(
